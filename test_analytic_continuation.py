@@ -6,8 +6,16 @@ Test suite for Data 解析延拓 (Analytic Continuation) implementations
 """
 
 import sys
+import os
 import math
 from typing import Callable
+
+# Add the repository directory to the path for imports
+REPO_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, REPO_DIR)
+
+# Apéry's constant: ζ(3) ≈ 1.2020569...
+APERYS_CONSTANT = 1.2020569031595942854
 
 
 def test_factorial_general():
@@ -16,7 +24,6 @@ def test_factorial_general():
     
     # Import the module
     try:
-        sys.path.insert(0, '/home/runner/work/MathmaticalAsianMathematics/MathmaticalAsianMathematics')
         import factorial_general as fg
     except ImportError as e:
         print(f"❌ Failed to import factorial_general: {e}")
@@ -89,7 +96,6 @@ def test_sampling():
     
     # Import the module
     try:
-        sys.path.insert(0, '/home/runner/work/MathmaticalAsianMathematics/MathmaticalAsianMathematics')
         import 抽樣 as sampling
     except ImportError as e:
         print(f"❌ Failed to import 抽樣: {e}")
@@ -144,12 +150,11 @@ def test_sampling():
     try:
         result = sampling.riemann_zeta_continuation(3)
         # ζ(3) is Apéry's constant ≈ 1.202...
-        expected = 1.2020569031595942854
-        if abs(result.real - expected) < 1e-10:
+        if abs(result.real - APERYS_CONSTANT) < 1e-10:
             print(f"✓ Test 4 passed: ζ(3) = {result.real:.10f}")
             tests_passed += 1
         else:
-            print(f"✗ Test 4 failed: Expected {expected:.10f}, got {result.real:.10f}")
+            print(f"✗ Test 4 failed: Expected {APERYS_CONSTANT:.10f}, got {result.real:.10f}")
             tests_failed += 1
     except Exception as e:
         print(f"✗ Test 4 failed with exception: {e}")
