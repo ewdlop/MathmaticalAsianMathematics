@@ -14,7 +14,7 @@ from typing import Callable
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, REPO_DIR)
 
-# Apéry's constant: ζ(3) ≈ 1.2020569...
+# Apéry's constant: ζ(3) ≈ 1.2020569031595942854
 APERYS_CONSTANT = 1.2020569031595942854
 
 
