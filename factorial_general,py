@@ -39,24 +39,36 @@ def is_int_like(x: float, tol: float = 0.0) -> bool:
     return abs(x - round(x)) <= tol
 
 
-def factorial_general(x: float, prec: int = 50):
+def factorial_general(x: float, prec: int = 50, threshold: int = 1000):
     """
-    Compute factorial for real x via:
-      - if x is integer and x >= 0: exact math.factorial(int(x))
+    Compute factorial for real x via analytic continuation (解析延拓):
+      - if x is integer and x >= 0 and x < threshold: exact math.factorial(int(x))
+      - if x is integer and x >= threshold: Gamma(x + 1) with mp.dps = prec (analytic continuation)
       - if x is negative integer: raise ValueError (Gamma pole)
       - else: Gamma(x + 1) with mp.dps = prec
 
+    The threshold prevents IndexOutOfBounds errors that occur when trying to convert
+    very large factorials to strings (Python's default limit is 4300 digits).
+    By using Gamma function (analytic continuation) for large values, we get a 
+    manageable floating-point representation instead of an exact but unprintable integer.
+
     Complexity remarks (informal, practical):
-      - integer n >= 0: CPython's math.factorial uses efficient algorithms; for large n
-        bit-complexity is ~ O(M(n log n) log n) in theory; in practice extremely fast.
-      - non-integer: mpmath's gamma is based on advanced approximations (e.g., Lanczos-like);
-        for p-digit precision, typical cost ~ O(M(p) log p) ≈ O(p (log p)^2) with FFT-backed bigfloats.
+      - integer n >= 0 and n < threshold: CPython's math.factorial uses efficient algorithms; 
+        for large n bit-complexity is ~ O(M(n log n) log n) in theory; in practice extremely fast.
+      - integer n >= threshold or non-integer: mpmath's gamma is based on advanced approximations 
+        (e.g., Lanczos-like); for p-digit precision, typical cost ~ O(M(p) log p) ≈ O(p (log p)^2) 
+        with FFT-backed bigfloats.
     """
     # Integer branch
     if is_int_like(x):
         n = int(round(x))
         if n < 0:
             raise ValueError(f"Factorial undefined for negative integers (pole at x={n}).")
+        # Use analytic continuation (Gamma) for large integers to avoid string conversion issues
+        if n >= threshold:
+            mp.mp.dps = max(prec, 20)
+            z = mp.mpf(n) + 1
+            return mp.gamma(z)
         return math.factorial(n)
 
     # Non-integer branch via Gamma
@@ -91,6 +103,8 @@ def main():
                         help="Input x for x! (supports real numbers). Default: -0.5")
     parser.add_argument("--prec", type=int, default=50,
                         help="Decimal digits for non-integer Gamma evaluation. Default: 50")
+    parser.add_argument("--threshold", type=int, default=1000,
+                        help="Threshold for switching to Gamma (analytic continuation) for large integers. Default: 1000")
     parser.add_argument("--bench", action="store_true",
                         help="Run a simple benchmark over a list of precisions.")
     parser.add_argument("--prec-list", type=int, nargs="*", default=[30, 60, 120, 240],
@@ -106,7 +120,7 @@ def main():
         return
 
     try:
-        val = factorial_general(x, prec=args.prec)
+        val = factorial_general(x, prec=args.prec, threshold=args.threshold)
         print(f"{x}!  =  {val}")
     except ValueError as e:
         print(f"Error: {e}")
