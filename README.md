@@ -32,3 +32,28 @@ n! 疊成階梯，踩上去的是發散，
 它答我：「大概 e 個，但我數不清。」
 我再問：「那無窮的總和呢？」
 它遞來 −1⁄12，說：「這是惡整費。」
+
+## 專案說明 (Project Description)
+
+本專案探索數學中的解析延拓概念，包括：
+- **factorial_general.py**: 階乘函數的解析延拓（通過伽瑪函數）
+- **抽樣.py**: 數據採樣與黎曼ζ函數的解析延拓演示
+- **test_analytic_continuation.py**: 測試套件
+
+詳細文檔請參見 [ANALYTIC_CONTINUATION.md](ANALYTIC_CONTINUATION.md)
+
+### 快速開始 (Quick Start)
+
+```bash
+# 安裝依賴
+pip install mpmath numpy
+
+# 運行演示
+python 抽樣.py --demo all
+
+# 計算階乘延拓
+python factorial_general.py --x -0.5
+
+# 運行測試
+python test_analytic_continuation.py
+```
