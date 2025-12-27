@@ -106,7 +106,7 @@ func subtractionExample(): Unit {
 }
 
 // ===== Main Function =====
-main(): Unit {
+func main(): Unit {
     println("=== Cangjie Type Theory with Chinese Characters ===")
     println("")
     
