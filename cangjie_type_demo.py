@@ -62,13 +62,15 @@ def subtraction_type_demo():
     print("Character Transformation: 愛 - 心 = 爱")
     print("\nBreakdown:")
     print("  愛 (traditional 'love') = complex structure with 心 (heart)")
-    print("  - 心 (heart radical)")
+    print("  - 心 (heart radical, approximately)")
     print("  = 爱 (simplified 'love')")
     print("\nComponent Analysis:")
     print("  Traditional 愛: Contains the radical 心 (heart)")
     print("  Simplified  爱: Streamlined form")
     print("\nType Theory: Type refinement or dependent types")
     print("  Removing constraints while preserving core meaning")
+    print("\nNote: The simplification process is conceptual,")
+    print("  representing the idea of type subtraction/refinement.")
 
 def character_stroke_analysis():
     """Show stroke count analysis"""
@@ -78,10 +80,12 @@ def character_stroke_analysis():
     print("  一: 1 stroke")
     print("  二: 2 strokes")
     print("  三: 3 strokes (1 + 2 = 3)")
-    print("\nSubtraction Type:")
+    print("\nSubtraction Type (conceptual):")
     print("  愛: 13 strokes (traditional)")
     print("  爱: 10 strokes (simplified)")
-    print("  Difference: 3 strokes (approximately 心 radical)")
+    print("  Difference: 3 strokes")
+    print("  Note: The 心 radical has 4 strokes in isolation,")
+    print("        but simplification is a conceptual transformation")
 
 def main():
     print_separator()

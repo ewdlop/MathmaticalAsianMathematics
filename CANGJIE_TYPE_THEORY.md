@@ -30,9 +30,7 @@ The character `三` (three) represents the concept of combining `一` (one) and 
 
 **Character Composition**: `一 + 二 = 王`
 
-Product types combine multiple values together. The character `王` (king/monarch) is composed of:
-- `一` - a horizontal stroke (top)
-- Three horizontal strokes resembling `二` stacked
+Product types combine multiple values together. The character `王` (king/monarch) is composed of three horizontal strokes connected by one vertical stroke, creating a unified structure.
 
 This demonstrates how components combine to create a composite structure, just like product types `A × B` hold both a value of type `A` and a value of type `B`.
 

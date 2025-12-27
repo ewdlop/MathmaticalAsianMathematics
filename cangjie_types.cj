@@ -36,6 +36,7 @@ func sumExample(): Unit {
     // In type theory, sum types represent disjoint union
     // 一 + 二 = 三 represents combining possibilities
     println("Sum Type: 一 + 二 = 三")
+    println("  value1: 一, value2: 二, sum: 三")
 }
 
 // ===== Product Type Example =====
