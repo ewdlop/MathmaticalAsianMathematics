@@ -32,3 +32,26 @@ n! 疊成階梯，踩上去的是發散，
 它答我：「大概 e 個，但我數不清。」
 我再問：「那無窮的總和呢？」
 它遞來 −1⁄12，說：「這是惡整費。」
+
+## Cangjie Type Theory (倉頡類型論)
+
+Exploring algebraic data types through Chinese character composition in Cangjie language:
+
+### Type Operations with Chinese Characters
+
+1. **Sum Type (和類型)**: `1 + 2 = 3` or `一 + 二 = 三`
+   - Represents disjoint union or "either-or" choices
+
+2. **Product Type (積類型)**: `一 + 二 = 王`
+   - Components combine to form composite structures
+   - Character strokes merge to create new meaning
+
+3. **Quotient Type (商類型)**: `田`
+   - Represents equivalence classes
+   - Four equal sections showing division/partitioning
+
+4. **Subtraction Type (差類型)**: `愛 - 心 = 爱`
+   - Traditional Chinese to Simplified Chinese transformation
+   - Removing components while preserving meaning
+
+See [CANGJIE_TYPE_THEORY.md](CANGJIE_TYPE_THEORY.md) for detailed explanations and [cangjie_types.cj](cangjie_types.cj) for the implementation.
