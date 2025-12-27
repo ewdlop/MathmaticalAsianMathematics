@@ -1,6 +1,6 @@
 # MathmaticalAsianMathematics
 
-张益唐; 雞兔同籠; 中文的交換率;中文的交換律; character token, Chern-Class, Yang–Mills, Calabi-Yau, printing press
+张益唐; 雞兔同籠; 中文的交換率;中文的交換律; 米田引理 (Yoneda Lemma); character token, Chern-Class, Yang–Mills, Calabi-Yau, printing press
 
 1+2+3+4+5+...+ n = -1/12 as n -> ∞ 、
 裝瘋賣傻、 
@@ -32,3 +32,7 @@ n! 疊成階梯，踩上去的是發散，
 它答我：「大概 e 個，但我數不清。」
 我再問：「那無窮的總和呢？」
 它遞來 −1⁄12，說：「這是惡整費。」
+
+## 範疇論 (Category Theory)
+
+[米田引理 (Yoneda Lemma)](./米田引理.md) - 範疇論中的基本引理，說明對象由其與其他對象的關係完全決定。
